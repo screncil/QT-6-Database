@@ -180,12 +180,13 @@ void MainWindow::on_Search_clicked()
 void MainWindow::on_Download_clicked()
 {
 
-    //Звертаємось через базу данних до функції select, щоб оновити таблицю
-    model->select();
-    model->setSort(model->fieldIndex("ID"), Qt::AscendingOrder);
-    model->select();
+    model -> setTable("Touring");
+    model -> select();
 
-    ui->statusbar->showMessage("Оновлення екрану...", 1000);
+
+    ui->tableView->setModel(model);
+    ui->tableView->resizeColumnsToContents();
+
 }
 
 
