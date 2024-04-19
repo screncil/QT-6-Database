@@ -62,6 +62,12 @@ private slots:
 
     void on_actionClose_triggered();
 
+    void on_action_triggered();
+
+    void on_action_2_triggered();
+
+    void on_action_4_triggered();
+
 private:
     Ui::MainWindow *ui;
     QSqlDatabase db;

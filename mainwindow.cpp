@@ -9,6 +9,8 @@
 #include "OpenApps.h"
 #include <QApplication>
 #include <QCoreApplication>
+#include <QDir>
+#include <QFileDialog>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -42,7 +44,7 @@ MainWindow::MainWindow(QWidget *parent)
 }
 
 
-void InsertionSort(QSqlTableModel* model , int column) {
+void InsertionSortOne(QSqlTableModel* model) {
 
     int rowCount = model->rowCount();
 
@@ -69,6 +71,32 @@ void InsertionSort(QSqlTableModel* model , int column) {
     }
 }
 
+void InsertionByPriceTwo(QSqlTableModel* model)
+{
+    int rowCount = model->rowCount();
+
+    for (int i = 0; i < rowCount - 1; ++i) {
+        int minIndex = i;
+        int minPrice = model->data(model->index(i, model->fieldIndex("Ціна"))).toInt();
+
+        for (int j = i + 1; j < rowCount; ++j) {
+            int currentPrice = model->data(model->index(j, model->fieldIndex("Ціна"))).toInt();
+
+            if (currentPrice > minPrice) {
+                minIndex = j;
+                minPrice = currentPrice;
+            }
+        }
+
+        if (minIndex != i) {
+            for (int column = 0; column < model->columnCount(); ++column) {
+                QVariant temp = model->data(model->index(i, column));
+                model->setData(model->index(i, column), model->data(model->index(minIndex, column)));
+                model->setData(model->index(minIndex, column), temp);
+            }
+        }
+    }
+}
 
 bool OpenExcel(int argc, TCHAR *argv[]) {
     // Путь к Excel
@@ -126,7 +154,7 @@ void MainWindow::on_Sort_clicked()
     model->select(); // Обновляем модель, чтобы отобразить отсортированные данные
 
 
-    InsertionSort(model, priceColumnIndex);
+    InsertionSortOne(model);
 
 }
 
@@ -251,7 +279,8 @@ void MainWindow::on_actionSort_triggered()
     model->select(); // Обновляем модель, чтобы отобразить отсортированные данные
 
 
-    InsertionSort(model, priceColumnIndex);
+    InsertionSortOne(model);
+
 }
 
 
@@ -283,7 +312,19 @@ void MainWindow::on_actionInfoApp_triggered()
 }
 
 
-void MainWindow::on_actionClose_triggered()
+
+
+void MainWindow::on_action_2_triggered()
+{
+    int priceColumnIndex = model->fieldIndex("Ціна");
+    model->setSort(priceColumnIndex, Qt::DescendingOrder);
+    model->select(); // Обновляем модель, чтобы отобразить отсортированные данныеr
+    InsertionByPriceTwo(model);
+}
+
+
+
+void MainWindow::on_action_4_triggered()
 {
     close();
 }

@@ -6,7 +6,7 @@
 class Interactions {
 public:
 
-    void InsertionSortByPrice(QSqlTableModel* model) const {
+    void InsertionSortByPriceOne(QSqlTableModel* model) const {
         int rowCount = model->rowCount();
 
         for (int i = 1; i < rowCount; ++i) {

@@ -36,9 +36,10 @@ public:
     QAction *action_Access;
     QAction *actionFullInfo;
     QAction *actionInform;
-    QAction *actionClose;
     QAction *actionInfoApp;
     QAction *OpenProvidnyk;
+    QAction *action_2;
+    QAction *action_4;
     QWidget *centralwidget;
     QGroupBox *Average_2;
     QLineEdit *lineEdit;
@@ -67,7 +68,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName("MainWindow");
-        MainWindow->resize(1440, 932);
+        MainWindow->resize(1440, 812);
         actionSort = new QAction(MainWindow);
         actionSort->setObjectName("actionSort");
         actionAverage = new QAction(MainWindow);
@@ -82,12 +83,14 @@ public:
         actionFullInfo->setObjectName("actionFullInfo");
         actionInform = new QAction(MainWindow);
         actionInform->setObjectName("actionInform");
-        actionClose = new QAction(MainWindow);
-        actionClose->setObjectName("actionClose");
         actionInfoApp = new QAction(MainWindow);
         actionInfoApp->setObjectName("actionInfoApp");
         OpenProvidnyk = new QAction(MainWindow);
         OpenProvidnyk->setObjectName("OpenProvidnyk");
+        action_2 = new QAction(MainWindow);
+        action_2->setObjectName("action_2");
+        action_4 = new QAction(MainWindow);
+        action_4->setObjectName("action_4");
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName("centralwidget");
         Average_2 = new QGroupBox(centralwidget);
@@ -396,11 +399,13 @@ public:
         menubar->addAction(menuoptions->menuAction());
         menuoptions->addSeparator();
         menuoptions->addAction(actionSort);
+        menuoptions->addAction(action_2);
         menuoptions->addAction(actionAverage);
         menuoptions->addAction(menu->menuAction());
         menuoptions->addAction(menu_2->menuAction());
         menuoptions->addSeparator();
-        menuoptions->addAction(actionClose);
+        menuoptions->addSeparator();
+        menuoptions->addAction(action_4);
         menu->addAction(action_Excel);
         menu->addAction(action_Word);
         menu->addAction(action_Access);
@@ -416,7 +421,7 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
-        actionSort->setText(QCoreApplication::translate("MainWindow", "\320\241\320\276\321\200\321\202\321\203\320\262\320\260\321\202\320\270 \320\267\320\260 \321\206\321\226\320\275\320\276\321\216", nullptr));
+        actionSort->setText(QCoreApplication::translate("MainWindow", "\320\241\320\276\321\200\321\202\321\203\320\262\320\260\320\275\320\275\321\217 \321\206\321\226\320\275\320\270 \320\267\320\260 \320\267\321\200\320\276\321\201\321\202\320\260\320\275\320\275\321\217\320\274", nullptr));
 #if QT_CONFIG(shortcut)
         actionSort->setShortcut(QCoreApplication::translate("MainWindow", "Ctrl+X", nullptr));
 #endif // QT_CONFIG(shortcut)
@@ -429,12 +434,13 @@ public:
         action_Access->setText(QCoreApplication::translate("MainWindow", "\320\222\321\226\320\264\320\272\321\200\320\270\321\202\320\270 Access", nullptr));
         actionFullInfo->setText(QCoreApplication::translate("MainWindow", "\320\237\320\276\320\262\320\275\320\260 \321\226\320\275\321\204\320\276\321\200\320\274\320\260\321\206\321\226\321\217 \320\277\321\200\320\276 \321\200\320\276\320\267\321\200\320\276\320\261\320\275\320\270\320\272\320\260", nullptr));
         actionInform->setText(QCoreApplication::translate("MainWindow", "\320\206\320\275\321\204\320\276\321\200\320\274\320\260\321\206\321\226\321\217 \320\277\321\200\320\276 \320\272\320\265\321\200\321\226\320\262\320\275\320\270\320\272\320\260 ", nullptr));
-        actionClose->setText(QCoreApplication::translate("MainWindow", "\320\222\320\270\321\205\321\226\320\264", nullptr));
         actionInfoApp->setText(QCoreApplication::translate("MainWindow", "\320\206\320\275\321\204\320\276\321\200\320\274\320\260\321\206\321\226\321\217 \320\277\321\200\320\276 \320\264\320\276\320\264\320\260\321\202\320\276\320\272", nullptr));
         OpenProvidnyk->setText(QCoreApplication::translate("MainWindow", "\320\222\321\226\320\264\320\272\321\200\320\270\321\202\320\270 \320\277\321\200\320\276\320\262\321\226\320\264\320\275\320\270\320\272", nullptr));
 #if QT_CONFIG(shortcut)
         OpenProvidnyk->setShortcut(QCoreApplication::translate("MainWindow", "Ctrl+A", nullptr));
 #endif // QT_CONFIG(shortcut)
+        action_2->setText(QCoreApplication::translate("MainWindow", "\320\241\320\276\321\200\321\202\321\203\320\262\320\260\320\275\320\275\321\217 \321\206\321\226\320\275\320\270 \320\267\320\260 \321\201\320\277\320\260\320\264\320\260\320\275\320\275\321\217\320\274", nullptr));
+        action_4->setText(QCoreApplication::translate("MainWindow", "\320\222\320\270\321\205\321\226\320\264", nullptr));
         Average_2->setTitle(QCoreApplication::translate("MainWindow", "\320\241\320\265\321\200\320\265\320\264\320\275\321\217 \321\206\321\226\320\275\321\217", nullptr));
         Average->setText(QCoreApplication::translate("MainWindow", "\320\241\320\265\321\200\320\265\320\264\320\275\321\217 \321\206\321\226\320\275\320\260", nullptr));
         groupBox_2->setTitle(QCoreApplication::translate("MainWindow", "\320\224\320\276\320\264\320\260\321\202\320\272\320\276\320\262\321\226 \320\276\320\277\321\206\321\226\321\227", nullptr));
