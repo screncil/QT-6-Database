@@ -8,6 +8,7 @@
 #include "Sorting.h"
 #include "OpenApps.h"
 #include <QApplication>
+#include <QCoreApplication>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -181,7 +182,10 @@ void MainWindow::on_Download_clicked()
 
     //Звертаємось через базу данних до функції select, щоб оновити таблицю
     model->select();
+    model->setSort(model->fieldIndex("ID"), Qt::AscendingOrder);
+    model->select();
 
+    ui->statusbar->showMessage("Оновлення екрану...", 1000);
 }
 
 
@@ -203,11 +207,6 @@ void MainWindow::on_OpenAccess_clicked()
     Access::OpenAccess();
 }
 
-
-void MainWindow::on_Close_triggered()
-{
-   QApplication::quit();
-}
 
 
 void MainWindow::on_actionFullInfo_triggered()
@@ -280,5 +279,11 @@ void MainWindow::on_actionInfoApp_triggered()
     QMessageBox msgBox;
     msgBox.setText("База даних Туристичної фірми");
     msgBox.exec();
+}
+
+
+void MainWindow::on_actionClose_triggered()
+{
+    close();
 }
 

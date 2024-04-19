@@ -1670,14 +1670,7 @@
     <addaction name="separator"/>
     <addaction name="actionClose"/>
    </widget>
-   <widget class="QMenu" name="menu_3">
-    <property name="title">
-     <string>Завантажити базу данних</string>
-    </property>
-    <addaction name="OpenProvidnyk"/>
-   </widget>
    <addaction name="menuoptions"/>
-   <addaction name="menu_3"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <widget class="QToolBar" name="toolBar">
